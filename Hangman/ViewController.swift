@@ -94,6 +94,7 @@ class ViewController: UIViewController {
         print("Debug - New Game Word: \(currentWord)")
     }
     
+    
     private func resetUI() {
         let allButtons = [q, w, e, r, t, y, u, i, o, p,
                           a, s, d, f, g, h, j, k, l,
@@ -119,9 +120,27 @@ class ViewController: UIViewController {
     
     @IBAction func letterTapped(_ sender: UIButton) {
         guard let letter = sender.titleLabel?.text?.uppercased() else { return }
-//        handleGuess(letter: Character(letter), button: sender)
+        handleGuess(letter: Character(letter), button: sender)
     }
-    
+    private func handleGuess(letter: Character, button: UIButton) {
+        guard button.isEnabled else { return }
+        
+        button.isEnabled = false
+        guessedLetters.insert(letter)
+        
+        if currentWord.contains(letter) {
+            // Correct guess
+            button.backgroundColor = .systemGreen
+            updateWordDisplay()
+            checkWinCondition()
+        } else {
+            // Wrong guess
+            button.backgroundColor = .systemRed
+            wrongGuesses += 1
+            updateHangmanImage()
+            checkLoseCondition()
+        }
+    }
     
     
     private func updateWordDisplay() {
@@ -141,5 +160,41 @@ class ViewController: UIViewController {
         // Use the provided hangman images
         hangManImage.image = UIImage(named: "hangman\(wrongGuesses)")
     }
-    
+    private func checkWinCondition() {
+        let wordSet = Set(currentWord)
+        let isWin = wordSet.isSubset(of: guessedLetters)
+        
+        if isWin {
+            wins += 1
+            winsCount.text = "# \(wins)"
+            showGameEndAlert(won: true)
+        }
+    }
+
+    private func checkLoseCondition() {
+        if wrongGuesses >= 6 {
+            losses += 1
+            lossesCount.text = "# \(losses)"
+            showGameEndAlert(won: false)
+        }
+    }
+
+    private func showGameEndAlert(won: Bool) {
+        let title = won ? "Woohoo!" : "Uh oh"
+        let message = won ? "You saved me! Would you like to play again?" :
+        "The correct word was \(currentWord). Would you like to try again?"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
+            self?.setupNewGame()
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .cancel)
+        
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        
+        present(alert, animated: true)
+    }
 }
