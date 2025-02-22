@@ -1,14 +1,7 @@
-//
-//  ViewController.swift
-//  Hangman
-//
-//  Created by Gouravdeep Singh on 2025-02-20.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
-
+    // Existing IBOutlets remain unchanged
     @IBOutlet weak var hangManImage: UIImageView!
     
     @IBOutlet weak var m: UIButton!
@@ -51,11 +44,102 @@ class ViewController: UIViewController {
     @IBOutlet weak var firstLetterOfWord: UILabel!
     @IBOutlet weak var stackOfWord: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    private var currentWord: String = ""
+    private var guessedLetters: Set<Character> = []
+    private var wrongGuesses: Int = 0
+    private var wins: Int = 0
+    private var losses: Int = 0
+    
+    // Word list - i will add more later
+    private let words = [
+        "DOLPHIN", "HARMONY", "WHISPER", "JOURNEY", "PHOENIX",
+        "MYSTERY", "RAINBOW", "ENDLESS", "WISDOM", "SUPREME",
+        "BLOSSOM", "CRYSTAL", "FANTASY", "GRAVITY", "HORIZON"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configureUI()
+        setupNewGame()
     }
-
-
+    
+    private func configureUI() {
+        let allButtons = [q, w, e, r, t, y, u, i, o, p,
+                          a, s, d, f, g, h, j, k, l,
+                          z, x, c, v, b, n, m]
+        
+        allButtons.forEach { button in
+            button?.layer.cornerRadius = 5
+            button?.backgroundColor = .systemGray5
+            button?.setTitleColor(.blue, for: .normal)
+        }
+        
+        winsCount.text = "# 0"
+        lossesCount.text = "# 0"
+        
+        hangManImage.image = UIImage(named: "hangman0")
+    }
+    
+    private func setupNewGame() {
+        guessedLetters.removeAll()
+        wrongGuesses = 0
+        
+        currentWord = words.randomElement() ?? "DOLPHIN"
+        
+        resetUI()
+        
+        hangManImage.image = UIImage(named: "hangman0")
+        
+        print("Debug - New Game Word: \(currentWord)")
+    }
+    
+    private func resetUI() {
+        let allButtons = [q, w, e, r, t, y, u, i, o, p,
+                          a, s, d, f, g, h, j, k, l,
+                          z, x, c, v, b, n, m]
+        
+        allButtons.forEach { button in
+            button?.backgroundColor = .systemGray5
+            button?.isEnabled = true
+        }
+        
+        let wordLabels = [firstLetterOfWord, secondLetterOfWord, thirdLetterOfWord,
+                          fourthLetterOfWord, fifthLetterOfWord, SixthLetterOfWord,
+                          seventhLetterOfWord]
+        
+        for (index, label) in wordLabels.enumerated() {
+            if index < currentWord.count {
+                label?.text = "_"
+            } else {
+                label?.text = ""
+            }
+        }
+    }
+    
+    @IBAction func letterTapped(_ sender: UIButton) {
+        guard let letter = sender.titleLabel?.text?.uppercased() else { return }
+//        handleGuess(letter: Character(letter), button: sender)
+    }
+    
+    
+    
+    private func updateWordDisplay() {
+        let wordLabels = [firstLetterOfWord, secondLetterOfWord, thirdLetterOfWord,
+                          fourthLetterOfWord, fifthLetterOfWord, SixthLetterOfWord,
+                          seventhLetterOfWord]
+        
+        let wordArray = Array(currentWord)
+        for (index, letter) in wordArray.enumerated() {
+            if guessedLetters.contains(letter) {
+                wordLabels[index]?.text = String(letter)
+            }
+        }
+    }
+    
+    private func updateHangmanImage() {
+        // Use the provided hangman images
+        hangManImage.image = UIImage(named: "hangman\(wrongGuesses)")
+    }
+    
 }
-
