@@ -143,15 +143,15 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="I"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVc-u6-t6a">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAl-Cc-aYO">
                                                 <rect key="frame" x="322.66666666666669" y="0.0" width="40.333333333333314" height="30"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="P"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="O"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAl-Cc-aYO">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVc-u6-t6a">
                                                 <rect key="frame" x="363" y="0.0" width="40.333333333333314" height="30"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="O"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="P"/>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -271,6 +271,49 @@
                             <constraint firstItem="2xD-fH-H2w" firstAttribute="bottom" secondItem="951-44-Y8R" secondAttribute="bottom" constant="250" id="jgI-ah-WIp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="SixthLetterOfWord" destination="klE-0d-Tef" id="pcj-Hi-mAy"/>
+                        <outlet property="a" destination="mEQ-Ii-am0" id="17z-EY-wGW"/>
+                        <outlet property="b" destination="fES-13-lEQ" id="mRJ-PP-2IS"/>
+                        <outlet property="c" destination="3fo-Wh-gpg" id="oo8-vP-1w7"/>
+                        <outlet property="d" destination="E9E-Aw-CqY" id="FdP-lz-rGP"/>
+                        <outlet property="e" destination="HNA-3J-qBa" id="38o-7U-HF4"/>
+                        <outlet property="f" destination="ajd-WA-Twx" id="m4X-CM-x6J"/>
+                        <outlet property="fifthLetterOfWord" destination="5o7-5d-YI6" id="Q1s-aZ-SuZ"/>
+                        <outlet property="firstLetterOfWord" destination="x4q-xS-XBJ" id="Sxp-BK-fEa"/>
+                        <outlet property="fourthLetterOfWord" destination="4mj-UC-Zlf" id="UKN-vs-jUt"/>
+                        <outlet property="g" destination="puY-aQ-8pK" id="YDv-hE-PZm"/>
+                        <outlet property="h" destination="FOG-P5-uGL" id="Qug-qc-4KG"/>
+                        <outlet property="hangManImage" destination="Ucd-RQ-p2j" id="K0C-rM-AIu"/>
+                        <outlet property="i" destination="Ehd-ug-da4" id="k5a-lu-JeT"/>
+                        <outlet property="j" destination="EXi-ya-zkq" id="BcF-U5-nXI"/>
+                        <outlet property="k" destination="7Ye-5k-0PS" id="iAn-RH-6M6"/>
+                        <outlet property="l" destination="gSy-3L-9Ee" id="9XE-LD-gqe"/>
+                        <outlet property="lossesCount" destination="o0Z-36-W7k" id="hoa-ag-jOP"/>
+                        <outlet property="m" destination="Udr-7N-Wbf" id="F1U-Nk-6IG"/>
+                        <outlet property="n" destination="LdI-xi-Qlq" id="EIF-OX-Au7"/>
+                        <outlet property="o" destination="kAl-Cc-aYO" id="Fgh-bA-IfS"/>
+                        <outlet property="p" destination="dVc-u6-t6a" id="aSG-W1-7dz"/>
+                        <outlet property="q" destination="MED-ea-71D" id="qGE-bu-LLR"/>
+                        <outlet property="r" destination="mHO-zd-Ooq" id="3gd-D2-arz"/>
+                        <outlet property="row1" destination="hD8-hm-ZBz" id="xD2-AH-N8U"/>
+                        <outlet property="row2" destination="fjR-CO-wrR" id="mzG-8L-92u"/>
+                        <outlet property="row3" destination="6dh-8V-CAZ" id="0pa-ry-Mfu"/>
+                        <outlet property="s" destination="tg7-SF-X5L" id="mfC-x0-3Pm"/>
+                        <outlet property="secondLetterOfWord" destination="Q3W-xw-erT" id="eeX-jk-1NZ"/>
+                        <outlet property="seventhLetterOfWord" destination="fTO-UY-vQ7" id="hI6-Ed-ree"/>
+                        <outlet property="stackOfWord" destination="951-44-Y8R" id="vgb-cM-1Ej"/>
+                        <outlet property="t" destination="BL1-Na-j1S" id="dlo-DW-4iG"/>
+                        <outlet property="thirdLetterOfWord" destination="qyF-PM-hLb" id="mQL-0r-U3s"/>
+                        <outlet property="titleLabel" destination="iGe-nE-nXd" id="Z8u-pg-fqh"/>
+                        <outlet property="u" destination="BUr-wR-QU2" id="NTf-nq-aBG"/>
+                        <outlet property="v" destination="lSj-WL-6DC" id="qkV-Mo-bxe"/>
+                        <outlet property="w" destination="mGh-QF-l5l" id="UfK-8c-2nr"/>
+                        <outlet property="winsCount" destination="j6g-XY-WUH" id="3Kv-RH-eOb"/>
+                        <outlet property="x" destination="fmj-gb-rf6" id="ReZ-bB-O5f"/>
+                        <outlet property="y" destination="Pdm-q4-lfE" id="7Vf-3X-k1n"/>
+                        <outlet property="z" destination="HWu-Qh-cDF" id="aMJ-Jc-zQx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
